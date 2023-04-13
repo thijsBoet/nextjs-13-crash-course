@@ -1,14 +1,23 @@
-import { NextResponse } from 'next/server'
-import courses from './data.json'
+import { NextResponse } from 'next/server';
+import { v4 as uuidv4 } from 'uuid';
+import courses from './data.json';
 
 export async function GET(request) {
-    return NextResponse.json(courses)
+	return NextResponse.json(courses);
 }
 
 export async function POST(request) {
-    const course = await request.json()
-    const newCourse = { id: courses.length + 1, title, description }
-    courses.push(newCourse)
+	const { title, description, level, link } = await request.json();
 
-    return NextResponse.json(newCourse)
+	console.log(title, description, level, link);
+	const newCourse = {
+		id: uuidv4(),
+		title,
+		description,
+		level,
+		link,
+	};
+	courses.push(newCourse);
+
+	return NextResponse.json(courses);
 }

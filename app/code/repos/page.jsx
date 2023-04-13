@@ -5,7 +5,7 @@ async function fetchRepos() {
     const response = await fetch(
 		`https://api.github.com/users/thijsBoet/repos`, {
 			next: {
-				revalidate: 60 * 60 * 24,
+				revalidate: 60 * 60 * 24, // 1 day
 			}
 		}
     );

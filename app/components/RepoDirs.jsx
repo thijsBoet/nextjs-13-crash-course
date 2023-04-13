@@ -7,7 +7,7 @@ async function fetchRepoContents(name) {
 		`https://api.github.com/repos/thijsBoet/${name}/contents`,
 		{
 			next: {
-				revalidate: 60 * 60 * 24,
+				revalidate: 60 * 60 * 24, // 1 day
 			},
 		},
 	);
